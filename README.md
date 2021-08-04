@@ -1,13 +1,12 @@
-
 # Putting the Pieces Together
 
 ## Description
 
 This lab will walk you, step by step, through the basics of programming a
 simple`Book` class. We've covered many of the concepts in this lab over a series
-of lessons. Now it is time to put everything togetheer. Once you've completed
-the tutorial, you should know enough to complete a similar object-oriented
-problem on your own.
+of lessons. Now it is time to put everything together. Once you've completed the
+tutorial, you should know enough to complete a similar object-oriented problem
+on your own.
 
 ## Instructions
 
@@ -61,7 +60,7 @@ Ready?
 Let's run the tests for the first time, and see what our first failure is. The
 output in your terminal should be something similar to:
 
-```bash
+```txt
 Failures:
 
   1) Book ::new gets initialized with a title
@@ -90,7 +89,7 @@ end
 
 Not too hard, right? Let's run those tests again and see what happens:
 
-```bash
+```txt
 1) Book ::new gets initialized with a title
      Failure/Error: expect{Book.new("And Then There Were None")}.to_not raise_error
        expected no Exception, got #<ArgumentError: wrong number of arguments (1 for 0)> with backtrace:
@@ -145,7 +144,7 @@ probably be doing some setup in. Cool?
 
 Let's run those tests again:
 
-```bash
+```txt
 1) Book properties has a title
      Failure/Error: expect(book.title).to eq("And Then There Were None")
      NoMethodError:
@@ -177,7 +176,7 @@ end
 
 And if we run the specs again, we see this output:
 
-```bash
+```txt
 1) Book properties has a title
      Failure/Error: expect(book.title).to eq("And Then There Were None")
 
@@ -193,7 +192,7 @@ with "And Then There Were None" as an argument, and then magically, when we call
 `title` on that book, it should return "And Then There Were None".
 
 This means that somewhere between calling `.new` and `.title`, our book is
-somehow getting assigned a title. Where *must* that be happening, then?
+somehow getting assigned a title. Where _must_ that be happening, then?
 
 In the `initialize` method! It really can't happen anywhere else.
 
@@ -227,7 +226,7 @@ end
 
 Easy as pie. Run those specs again and let's see what happens:
 
-```bash
+```txt
 1) Book properties has a title
      Failure/Error: expect(book.title).to eq("And Then There Were None")
 
@@ -268,7 +267,7 @@ end
 
 Run the specs, and boom! New error:
 
-```bash
+```txt
 Failures:
 
   1) Book properties has an author name
@@ -287,7 +286,7 @@ What? That's gotta be a mistake, right? Nope.
 
 Let's step back for a second. That `title` method we wrote before is what is
 called a "getter". We call it this because, well, it "gets" a property for us.
-But what happens if we want to, say, *set* a property, or an instance variable?
+But what happens if we want to, say, _set_ a property, or an instance variable?
 This is where "setters" come into play.
 
 Setters are methods that allow us to set instance variables. It seems weird, but
@@ -327,7 +326,7 @@ end
 
 What happens if we run the specs now?
 
-```bash
+```txt
 Failures:
 
   1) Book properties has an author name
@@ -373,7 +372,7 @@ end
 
 And another run of the tests gives us this:
 
-```bash
+```txt
 Failures:
 
   1) Book properties has a page count
@@ -463,7 +462,7 @@ end
 
 Run `learn spec/01_book_spec.rb` now, and we get the following:
 
-```bash
+```txt
 1) Book #turn_page can turn the page
      Failure/Error: book.turn_page
      NoMethodError:
@@ -477,7 +476,7 @@ So, this is pretty silly. Books can't turn their own pages, but we'll use the
 missing `turn_page` method to demonstrate that we don't only give our classes
 properties.
 
-Like I said above, OOP gives us the opportunity to encapsulate both data *and*
+Like I said above, OOP gives us the opportunity to encapsulate both data _and_
 behavior within our classes. Here, we want to be able to make our books turn
 their pages.
 
@@ -529,7 +528,7 @@ end
 
 A quick run of the tests gives us this:
 
-```bash
+```txt
 1) Book #turn_page can turn the page
      Failure/Error: expect($stdout).to receive(:puts).with("Flipping the page...wow, you read fast!")
        (#<IO:0x0000010106ac00>).puts("Flipping the page...wow, you read fast!")
@@ -538,7 +537,7 @@ A quick run of the tests gives us this:
      # ./spec/01_book_spec.rb:35:in `block (3 levels) in <top (required)>'
 ```
 
-It looks like our `turn_page` method doesn't really need to *do* much aside from
+It looks like our `turn_page` method doesn't really need to _do_ much aside from
 print something to the screen. So, to make the test pass, let's add a `puts`
 statement to our `turn_page` method:
 
@@ -615,15 +614,15 @@ This is a really simplistic explanation, but here's what they do:
 
 1. Attribute Readers
 
-  * Attribute readers give us a getter, or reader, for free.
+- Attribute readers give us a getter, or reader, for free.
 
-  * In other words, if we have an attribute reader (`attr_reader`) for `:name`, Ruby will create a `name` method for us.
+- In other words, if we have an attribute reader (`attr_reader`) for `:name`, Ruby will create a `name` method for us.
 
 2. Attribute Accessors
 
-  * Attribute accessors give us both a getter and a setter for free!
+- Attribute accessors give us both a getter and a setter for free!
 
-  * In other words, if we have an attribute accessor (`attr_accessor`) for `:name`, Ruby will create both `name` and `name=` methods for us.
+- In other words, if we have an attribute accessor (`attr_accessor`) for `:name`, Ruby will create both `name` and `name=` methods for us.
 
 We can really, really simplify our code now! Since the `author`, `page_count`,
 and `genre` setters or getters do not do anything special (they just set
